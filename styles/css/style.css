@@ -1,32 +1,31 @@
-/* Здесь вы напишете основную часть стилей страницы.
+@charset "UTF-8";
 
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ theme-dark — класс тёмной темы
-✦ theme-light — класс светлой темы
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
-
-*/
+/* Body */
 
 .page {
-  background-color: #d4d4d4;
   font-variation-settings: var(--text-font-weight);
   min-inline-size: 320px;
   min-block-size: 100dvb;
   color: var(--text-color);
   background: repeating-linear-gradient(
-      to left,
-      #d3d3d3 0 2px,
-      #d3d3d300 2px 4px
+      90deg,
+      var(--background-color),
+      var(--background-color) 2px,
+      transparent 2px,
+      transparent 4px
     ),
-    repeating-linear-gradient(to bottom, #d3d3d3 0 2px, #d3d3d300 2px 4px),
-    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+    repeating-linear-gradient(
+      180deg,
+      var(--background-color-start),
+      var(--background-color-end) 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      var(--background-color-start) 0.01%,
+      var(--background-color-end)
+    );
   background-attachment: fixed;
   background-size: cover;
 }
@@ -81,8 +80,8 @@
   (-webkit-text-stroke: 1px var(--label-stroke-color)) {
   .image-label {
     text-shadow: none;
-    text-stroke: 1px var(--label-stroke-color);
     -webkit-text-stroke: 1px var(--label-stroke-color);
+    text-stroke: 1px var(--label-stroke-color);
   }
 }
 
@@ -117,12 +116,12 @@
 }
 
 .like-icon .heart {
+  transition: fill 0.1s;
   transform-origin: center center;
 }
 
 .like-icon .contour {
   fill: var(--text-color);
-  transition: fill 0.1s linear;
 }
 
 .like-icon .main-body {
@@ -132,7 +131,7 @@
 
 .like-icon .core {
   fill: var(--page-background);
-  transition: fill 0.3s 0.03s linear;
+  transition: fill 0.3s 0.05s;
 }
 
 .like-icon .sparks {
@@ -142,37 +141,30 @@
 
 .like-icon:hover .main-body {
   fill: var(--text-color);
-  transition: fill 0.3s linear 0.05s;
 }
 
 .like-icon:hover .core {
   fill: var(--text-color);
-  transition: fill 0.3s linear;
 }
 
 .like-icon:active .main-body {
   fill: var(--heart-color);
-  transition: fill 0.3s linear 0.05s;
 }
 
 .like-icon:active .core {
   fill: var(--heart-color);
-  transition: fill 0.3s linear;
 }
 
 .like-icon.is-liked .contour {
   fill: var(--heart-color);
-  transition: fill 0.3s linear 0.06s;
 }
 
 .like-icon.is-liked .main-body {
   fill: var(--heart-color);
-  transition: fill 0.3s linear 0.05s;
 }
 
 .like-icon.is-liked .core {
   fill: var(--heart-color);
-  transition: fill 0.3s linear;
 }
 
 /* Buttons */
@@ -186,7 +178,7 @@
   background: none;
   border: 2px solid var(--stroke-color);
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.5s ease-in-out;
 }
 
 .button::before {
@@ -235,7 +227,7 @@
   }
 }
 
-.button-conf {
+.ok-button {
   text-transform: uppercase;
   width: 100%;
   padding: 10px 0;
@@ -248,7 +240,6 @@
   display: flex;
   flex-direction: column;
   gap: 50px;
-  margin-bottom: 105px;
 }
 
 /* Header */
@@ -284,6 +275,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: -moz-min-content;
   width: min-content;
   text-align: start;
   margin: 0 45.1%;
@@ -319,7 +311,6 @@
   content: "▶";
   position: absolute;
   left: -15px;
-  top: 0px;
 }
 
 .theme-menu__button::after {
@@ -392,7 +383,6 @@
   display: flex;
   flex-direction: column;
   gap: 26px;
-  line-height: calc(21 / 18);
 }
 
 .card__icon-button {
@@ -402,7 +392,6 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  transition: border-color 0.3s ease;
 }
 
 .card__icon-button:focus {
