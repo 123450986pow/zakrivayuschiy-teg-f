@@ -15,18 +15,18 @@
 */
 
 .page {
-  background-color: #d4d4d4;
+  background-color: var(--page-background);
   font-variation-settings: var(--text-font-weight);
   min-inline-size: 320px;
   min-block-size: 100dvb;
   color: var(--text-color);
   background: repeating-linear-gradient(
       to left,
-      #d3d3d3 0 2px,
+     var(--background-color) 0 2px,
       #d3d3d300 2px 4px
     ),
-    repeating-linear-gradient(to bottom, #d3d3d3 0 2px, #d3d3d300 2px 4px),
-    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+    repeating-linear-gradient(to bottom, var(--background-color) 0 2px, #d3d3d300 2px 4px),
+    linear-gradient(to bottom, var(--background-color-start) 0.01%, var(--background-color-end));
   background-attachment: fixed;
   background-size: cover;
 }
